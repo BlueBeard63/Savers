@@ -1,0 +1,35 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Savers.Shared", "Savers.Shared\Savers.Shared.csproj", "{7BB0C3B4-5CC8-477F-BE65-25C1943F259F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Savers", "Savers", "{0C94CC69-5CA3-4532-A815-9A4E77AB0504}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Savers.MySql", "Savers.MySql\Savers.MySql.csproj", "{C7E83229-61B3-4302-9033-A5351B84A45F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6754A30C-8D6B-48C5-A4D0-DFE05F9C8AF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Savers.Tests.MySql", "Savers.Tests.MySql\Savers.Tests.MySql.csproj", "{6CDE9204-02F2-4484-953D-8029A3D2AE9F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BB0C3B4-5CC8-477F-BE65-25C1943F259F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BB0C3B4-5CC8-477F-BE65-25C1943F259F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BB0C3B4-5CC8-477F-BE65-25C1943F259F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BB0C3B4-5CC8-477F-BE65-25C1943F259F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7E83229-61B3-4302-9033-A5351B84A45F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7E83229-61B3-4302-9033-A5351B84A45F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7E83229-61B3-4302-9033-A5351B84A45F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7E83229-61B3-4302-9033-A5351B84A45F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CDE9204-02F2-4484-953D-8029A3D2AE9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CDE9204-02F2-4484-953D-8029A3D2AE9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CDE9204-02F2-4484-953D-8029A3D2AE9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CDE9204-02F2-4484-953D-8029A3D2AE9F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C7E83229-61B3-4302-9033-A5351B84A45F} = {0C94CC69-5CA3-4532-A815-9A4E77AB0504}
+		{6CDE9204-02F2-4484-953D-8029A3D2AE9F} = {6754A30C-8D6B-48C5-A4D0-DFE05F9C8AF4}
+	EndGlobalSection
+EndGlobal
