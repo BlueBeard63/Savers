@@ -46,6 +46,14 @@ namespace Savers.Tests.MySQL.Generation
             Assert.True(generated_sql == test_sql,
                 $"Generated SQL != Test SQL\nGenerated SQL:\n{generated_sql}\nTest SQL:\n{test_sql}");
         }
+
+        [Theory]
+        [ClassData(typeof(UpdateStatementTestData))]
+        public void UpdateStatement(string generated_sql, string test_sql)
+        {
+            Assert.True(generated_sql == test_sql,
+                $"Generated SQL != Test SQL\nGenerated SQL:\n{generated_sql}\nTest SQL:\n{test_sql}");
+        }
     }
 
     public class SelectStatementTestData : IEnumerable<object[]>
@@ -69,8 +77,7 @@ namespace Savers.Tests.MySQL.Generation
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
-
-
+    
     public class CountStatementTestData : IEnumerable<object[]>
     {
         private static readonly IEnumerable<object[]> TestObjects = new[]
@@ -86,8 +93,7 @@ namespace Savers.Tests.MySQL.Generation
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
-
-
+    
     public class SumStatementTestData : IEnumerable<object[]>
     {
         private static readonly IEnumerable<object[]> TestObjects = new[]
@@ -103,8 +109,7 @@ namespace Savers.Tests.MySQL.Generation
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
-
-
+    
     public class AverageStatementTestData : IEnumerable<object[]>
     {
         private static readonly IEnumerable<object[]> TestObjects = new[]
@@ -125,8 +130,7 @@ namespace Savers.Tests.MySQL.Generation
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
-
-
+    
     public class InsertStatementTestData : IEnumerable<object[]>
     {
         private static readonly IEnumerable<object[]> TestObjects = new[]
@@ -136,6 +140,27 @@ namespace Savers.Tests.MySQL.Generation
                 new MySqlSaver<TestClass>().StartQuery().Insert(new TestClass { TestClassString = "TestString" }).Data.Sql,
                 "INSERT INTO TestClass (TestClassString) VALUES (@TestClassString);"
             }
+        };
+
+        public IEnumerator<object[]> GetEnumerator() => TestObjects.GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+    }
+
+    public class UpdateStatementTestData : IEnumerable<object[]>
+    {
+        private static readonly IEnumerable<object[]> TestObjects = new[]
+        {
+            new object[]
+            {
+                new MySqlSaver<TestClass>().StartQuery().Update(("TestClassString", "Example")).Finalise().Data.Sql,
+                "UPDATE TestClass SET TestClassString = @TestClassString;"
+            },
+            new object[]
+            {
+                new MySqlSaver<TestClass>().StartQuery().Update(("TestClassString", "Example"), ("TestExampleInt", 5)).Finalise().Data.Sql,
+                "UPDATE TestClass SET TestClassString = @TestClassString, TestExampleInt = @TestExampleInt;"
+            },
         };
 
         public IEnumerator<object[]> GetEnumerator() => TestObjects.GetEnumerator();
