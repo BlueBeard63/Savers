@@ -1,5 +1,3 @@
-using System;
-
 namespace Savers.MySql.Statements;
 
 public struct DataColumn

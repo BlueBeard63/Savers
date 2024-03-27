@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Reflection;
 using Savers.MySql.Clauses;
 using Savers.MySql.Tables.Attributes;

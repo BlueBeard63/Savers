@@ -1,5 +1,3 @@
-using System;
-
 namespace Savers.MySql.Tables.Attributes;
 
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct)]
