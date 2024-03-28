@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>BlueBeard63</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <description>This is just a support library for the different savers.</description>
+    <releaseNotes>Initial Upload</releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags />
+    <readme>docs\README.md</readme>
+  </metadata>
+  <files>
+    <file src="./README.md" target="docs\" />
+  </files>
+</package>
