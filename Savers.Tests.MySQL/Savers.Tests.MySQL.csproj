@@ -5,11 +5,12 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{7BB0C3B4-5CC8-477F-BE65-25C1943F259F}</ProjectGuid>
+        <ProjectGuid>{AE78A784-9D2F-4696-8A2C-62FFA8D898A4}</ProjectGuid>
+        <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>Savers.Shared</RootNamespace>
-        <AssemblyName>Savers.Shared</AssemblyName>
+        <RootNamespace>Savers.Tests.MySQL</RootNamespace>
+        <AssemblyName>Savers.Tests.MySQL</AssemblyName>
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
         <LangVersion>latest</LangVersion>
@@ -38,26 +39,36 @@
         <Reference Include="System.Core"/>
         <Reference Include="System.Data"/>
         <Reference Include="System.Xml"/>
+        <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c">
+            <HintPath>..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
+        </Reference>
+        <Reference Include="xunit.assert, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c">
+            <HintPath>..\packages\xunit.assert.2.1.0\lib\dotnet\xunit.assert.dll</HintPath>
+        </Reference>
+        <Reference Include="xunit.core, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c">
+            <HintPath>..\packages\xunit.extensibility.core.2.1.0\lib\dotnet\xunit.core.dll</HintPath>
+        </Reference>
+        <Reference Include="xunit.execution.desktop, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c">
+            <HintPath>..\packages\xunit.extensibility.execution.2.1.0\lib\net45\xunit.execution.desktop.dll</HintPath>
+        </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Exceptions\CannotGetTableName.cs" />
-        <Compile Include="Exceptions\LimitCannotBeNegative.cs" />
-        <Compile Include="Exceptions\LimitCannotBeZero.cs" />
-        <Compile Include="Exceptions\NoColumnsToOrderBy.cs" />
-        <Compile Include="Exceptions\NoFilterConditions.cs" />
-        <Compile Include="Exceptions\NoPrimaryKeyFound.cs" />
-        <Compile Include="Exceptions\NoPropertiesToSerialize.cs" />
+        <Compile Include="Generation\Clauses.cs" />
+        <Compile Include="Generation\Statements.cs" />
+        <Compile Include="Generation\TableGeneration.cs" />
+        <Compile Include="Misc\ColumnTypeTests.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
-        <Compile Include="Savers\File\IFileSaver.cs" />
-        <Compile Include="Savers\ISaver.cs" />
-        <Compile Include="Savers\SaverType.cs" />
-        <Compile Include="Savers\Sql\DataParam.cs" />
-        <Compile Include="Savers\Sql\Interfaces\IClause.cs" />
-        <Compile Include="Savers\Sql\Interfaces\IExecutor.cs" />
-        <Compile Include="Savers\Sql\Interfaces\ISqlSaver.cs" />
-        <Compile Include="Savers\Sql\Interfaces\IStatement.cs" />
-        <Compile Include="Savers\Sql\Order.cs" />
-        <Compile Include="Savers\Sql\SQLData.cs" />
+        <Compile Include="TestClass.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Savers.MySql\Savers.MySql.csproj">
+        <Project>{c7e83229-61b3-4302-9033-a5351b84a45f}</Project>
+        <Name>Savers.MySql</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\Savers.Shared\Savers.Shared.csproj">
+        <Project>{7bb0c3b4-5cc8-477f-be65-25c1943f259f}</Project>
+        <Name>Savers.Shared</Name>
+      </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -67,5 +78,4 @@
     <Target Name="AfterBuild">
     </Target>
     -->
-
 </Project>
