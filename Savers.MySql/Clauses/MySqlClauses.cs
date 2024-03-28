@@ -44,7 +44,7 @@ internal class MySqlClauses<T>(SqlData data) : IClause<T>
             Data.Filters.Add("WHERE", (filter_sql, 1));
         }
 
-        return new MySqlClauses<T>(Data);
+        return this;
     }
 
     public IClause<T> WhereStarts(params (string, string)[] filters)
@@ -81,7 +81,7 @@ internal class MySqlClauses<T>(SqlData data) : IClause<T>
             Data.Filters.Add("WHERE", (filter_sql, 1));
         }
 
-        return new MySqlClauses<T>(Data);
+        return this;
     }
 
     public IClause<T> WhereEnds(params (string, string)[] filters)
@@ -118,7 +118,7 @@ internal class MySqlClauses<T>(SqlData data) : IClause<T>
             Data.Filters.Add("WHERE", (filter_sql, 1));
         }
 
-        return new MySqlClauses<T>(Data);
+        return this;
     }
 
     public IClause<T> WhereContains(params (string, string)[] filters)
@@ -155,7 +155,7 @@ internal class MySqlClauses<T>(SqlData data) : IClause<T>
             Data.Filters.Add("WHERE", (filter_sql, 1));
         }
 
-        return new MySqlClauses<T>(Data);
+        return this;
     }
 
     public IClause<T> OrderBy(Order order, params string[] columns)
@@ -176,7 +176,7 @@ internal class MySqlClauses<T>(SqlData data) : IClause<T>
             Data.Filters.Add("ORDER BY", (string.Join(", ", ordered_columns), int.MaxValue-1));
         }
         
-        return new MySqlClauses<T>(Data);
+        return this;
     }
 
     public IClause<T> OrderBy(params (string, Order)[] columns)
@@ -197,7 +197,7 @@ internal class MySqlClauses<T>(SqlData data) : IClause<T>
             Data.Filters.Add("ORDER BY", (string.Join(", ", ordered_columns), int.MaxValue-1));
         }
 
-        return new MySqlClauses<T>(Data);
+        return this;
     }
 
     public IClause<T> Limit(int count)
@@ -210,7 +210,7 @@ internal class MySqlClauses<T>(SqlData data) : IClause<T>
                 throw new LimitCannotBeNegative();
             default:
                 Data.Filters["LIMIT"] = (count.ToString(), int.MaxValue);
-                return new MySqlClauses<T>(Data);
+                return this;
         }
     }
 
