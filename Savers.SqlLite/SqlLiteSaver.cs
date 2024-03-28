@@ -14,7 +14,7 @@ namespace Savers.SqlLite
         {
             Connection = location;
             
-            // Generate Table
+            var table = GenerateTableDDL();
             // Generate Executor
             // Execute Table DDL
         }
@@ -23,10 +23,8 @@ namespace Savers.SqlLite
         {
         }
 
-        public string GenerateTableDDL()
-        {
-            return "";
-        }
+        public string GenerateTableDDL() => 
+            TableGeneration.Generate(typeof(T));
 
         public IStatement<T> StartQuery() =>
             new SqlLiteStatements<T>(new SqlData(Connection));
