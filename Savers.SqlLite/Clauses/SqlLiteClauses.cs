@@ -1,3 +1,5 @@
+using System.Linq;
+using Savers.Shared.Exceptions;
 using Savers.Shared.Savers.Sql;
 using Savers.Shared.Savers.Sql.Interfaces;
 
@@ -9,37 +11,75 @@ internal class SqlLiteClauses<T>(SqlData data) : IClause<T>
 
     public IClause<T> Where(params (string, object)[] filters)
     {
-        throw new System.NotImplementedException();
+        if (!filters.Any())
+        {
+            throw new NoFilterConditions();
+        }
+
+        return this;
     }
 
     public IClause<T> WhereStarts(params (string, string)[] filters)
     {
-        throw new System.NotImplementedException();
+        if (!filters.Any())
+        {
+            throw new NoFilterConditions();
+        }
+
+        return this;
     }
 
     public IClause<T> WhereEnds(params (string, string)[] filters)
     {
-        throw new System.NotImplementedException();
+        if (!filters.Any())
+        {
+            throw new NoFilterConditions();
+        }
+
+        return this;
     }
 
     public IClause<T> WhereContains(params (string, string)[] filters)
     {
-        throw new System.NotImplementedException();
+        if (!filters.Any())
+        {
+            throw new NoFilterConditions();
+        }
+
+        return this;
     }
 
     public IClause<T> OrderBy(Order order, params string[] columns)
     {
-        throw new System.NotImplementedException();
+        if (!columns.Any())
+        {
+            throw new NoColumnsToOrderBy();
+        }
+
+        return this;
     }
 
     public IClause<T> OrderBy(params (string, Order)[] columns)
     {
-        throw new System.NotImplementedException();
+        if (!columns.Any())
+        {
+            throw new NoColumnsToOrderBy();
+        }
+
+        return this;
     }
 
     public IClause<T> Limit(int count)
     {
-        throw new System.NotImplementedException();
+        switch (count)
+        {
+            case 0:
+                throw new LimitCannotBeZero();
+            case < 0:
+                throw new LimitCannotBeNegative();
+            default:
+                return this;
+        }
     }
 
     public IExecutor Finalise()
