@@ -30,14 +30,14 @@ public class TableGeneration
 
         var property_columns = properties
             .Where(x =>
-                type.GetCustomAttributes().Any(attribute =>
-                    attribute.GetType().GetInterfaces().Any(z => z == typeof(IDatabaseColumn))) || !type
+                x.GetCustomAttributes().Any(attribute =>
+                    attribute.GetType().GetInterfaces().Any(z => z == typeof(IDatabaseColumn))) || !x
                     .GetCustomAttributes().Any(attribute =>
                         attribute.GetType().GetInterfaces().Any(z => z == typeof(IDatabaseIgnore))))
             .Select(x => (x,
                 x.GetCustomAttributes().Any(attribute =>
                     attribute.GetType().GetInterfaces().Any(z => z == typeof(IDatabaseColumn)))
-                    ? type.GetCustomAttributes().First(attribute => attribute.GetType().GetInterfaces().Any(z => z == typeof(IDatabaseColumn))) as IDatabaseColumn
+                    ? x.GetCustomAttributes().First(attribute => attribute.GetType().GetInterfaces().Any(z => z == typeof(IDatabaseColumn))) as IDatabaseColumn
                     : throw new SerializationError("Trying to serialize a property that is not a DatabaseColumn")))
             .ToList();
 
