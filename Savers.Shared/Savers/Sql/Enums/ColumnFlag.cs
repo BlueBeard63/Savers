@@ -1,6 +1,6 @@
 using System;
 
-namespace Savers.MySql.Tables.Enums;
+namespace Savers.Shared.Savers.Sql.Enums;
 
 [Flags]
 public enum ColumnFlag

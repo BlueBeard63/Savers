@@ -2,8 +2,8 @@ using System.Linq;
 using System.Reflection;
 using Savers.MySql.Clauses;
 using Savers.MySql.Tables.Attributes;
-using Savers.MySql.Tables.Enums;
 using Savers.Shared.Savers.Sql;
+using Savers.Shared.Savers.Sql.Enums;
 using Savers.Shared.Savers.Sql.Interfaces;
 
 namespace Savers.MySql.Statements;

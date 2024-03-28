@@ -7,11 +7,11 @@ using Xunit;
 
 namespace Savers.Tests.MySQL.Misc
 {
-    public class ColumnTypeTests
+    public class EColumnTypeTests
     {
         [Theory]
         [ClassData(typeof(ColumnTypeTestData))]
-        public void Test1(ColumnType detected, ColumnType correct)
+        public void Test1(EColumnType detected, EColumnType correct)
         {
             Assert.True(detected == correct, $"detected != correct\nDetected: {detected}\nCorrect: {correct}");
         }
@@ -26,62 +26,62 @@ namespace Savers.Tests.MySQL.Misc
             new object[]
             {
                 Column.GetColumnType(typeof(int)),
-                ColumnType.INT
+                EColumnType.INT
             },
             new object[]
             {
                 Column.GetColumnType(typeof(long)),
-                ColumnType.BIGINT
+                EColumnType.BIGINT
             },
             new object[]
             {
                 Column.GetColumnType(typeof(bool)),
-                ColumnType.BIT
+                EColumnType.BIT
             },
             new object[]
             {
                 Column.GetColumnType(typeof(char)),
-                ColumnType.CHAR
+                EColumnType.CHAR
             },
             new object[]
             {
                 Column.GetColumnType(typeof(Guid)),
-                ColumnType.CHAR
+                EColumnType.CHAR
             },
             new object[]
             {
                 Column.GetColumnType(typeof(DateTime)),
-                ColumnType.DATETIME
+                EColumnType.DATETIME
             },
             new object[]
             {
                 Column.GetColumnType(typeof(decimal)),
-                ColumnType.DECIMAL
+                EColumnType.DECIMAL
             },
             new object[]
             {
                 Column.GetColumnType(typeof(float)),
-                ColumnType.FLOAT
+                EColumnType.FLOAT
             },
             new object[]
             {
                 Column.GetColumnType(typeof(string)),
-                ColumnType.VARCHAR
+                EColumnType.VARCHAR
             },
             new object[]
             {
                 Column.GetColumnType(typeof(byte)),
-                ColumnType.TINYINT
+                EColumnType.TINYINT
             },
             new object[]
             {
                 Column.GetColumnType(typeof(byte[])),
-                ColumnType.VARBINARY
+                EColumnType.VARBINARY
             },
             new object[]
             {
                 Column.GetColumnType(typeof(uint)),
-                ColumnType.VARCHAR
+                EColumnType.VARCHAR
             },
         };
 

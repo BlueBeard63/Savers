@@ -1,5 +1,5 @@
 ﻿using Savers.MySql.Tables.Attributes;
-using Savers.MySql.Tables.Enums;
+using Savers.Shared.Savers.Sql.Enums;
 
 namespace Savers.Tests.MySQL
 {

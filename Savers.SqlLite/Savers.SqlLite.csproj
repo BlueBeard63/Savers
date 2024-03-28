@@ -45,6 +45,7 @@
         <Compile Include="SqlLiteExecutor.cs" />
         <Compile Include="SqlLiteSaver.cs" />
         <Compile Include="Statements\SqlLiteStatements.cs" />
+        <Compile Include="Tables\Enums\ColumnType.cs" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\Savers.Shared\Savers.Shared.csproj">
@@ -53,7 +54,7 @@
       </ProjectReference>
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="Tables\" />
+      <Folder Include="Tables\Attributes\" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

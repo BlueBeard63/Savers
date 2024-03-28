@@ -2,13 +2,13 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>$version$</version>
+    <version>1.0.1</version>
     <title>$title$</title>
     <authors>BlueBeard63</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <description>This is a general saver for the MySql database language. It creates the DDL and SQL required.</description>
-    <releaseNotes>Initial Upload</releaseNotes>
+    <releaseNotes>Switched from .NET core to .NET framework</releaseNotes>
     <copyright>$copyright$</copyright>
     <tags />
     <readme>docs\README.md</readme>

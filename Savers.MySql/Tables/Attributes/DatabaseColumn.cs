@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Savers.MySql.Tables.Enums;
+using Savers.Shared.Savers.Sql;
+using Savers.Shared.Savers.Sql.Enums;
+using Savers.Shared.Savers.Sql.Interfaces;
 
 namespace Savers.MySql.Tables.Attributes;
 
 [AttributeUsage(AttributeTargets.Property)]
-public class DatabaseColumn : Attribute
+public class DatabaseColumn : Attribute, IDatabaseColumn
 {
-    internal string ColumnName { get; set; }
-    private ColumnType ColumnType { get; set; }
-    private int ColumnSize { get; set; }
-    private ColumnFlag ColumnFlag { get; set; }
+    public string ColumnName { get; set; }
+    public string ColumnType { get; set; }
+    public int ColumnSize { get; set; }
+    public ColumnFlag ColumnFlag { get; set; }
 
     public DatabaseColumn(string column_name, ColumnFlag column_flag)
     {
@@ -52,22 +55,22 @@ public class DatabaseColumn : Attribute
 
         var field_flags = CreateFlagString();
         var field =
-            $"{ColumnName} {ColumnType.ToString().Replace('_', ' ')}{(ColumnSize != 0 ? $"({ColumnSize})" : "")}{(!string.IsNullOrEmpty(field_flags) ? " " + field_flags : "")}";
+            $"{ColumnName} {ColumnType.Replace('_', ' ')}{(ColumnSize != 0 ? $"({ColumnSize})" : "")}{(!string.IsNullOrEmpty(field_flags) ? " " + field_flags : "")}";
 
         return (field, constraint, foreign_table_dll);
     }
 
-    private (string, string) GenerateForeignTable(Type type)
+    public (string, string) GenerateForeignTable(Type type)
     {
         var ddl = "";
 
-        if (!GenerateTable.DoesExist(type))
+        if (!TableGeneration.DoesExist(type))
         {
-            ddl = GenerateTable.Generate(type);
+            ddl = TableGeneration.Generate(type);
         }
 
-        var type_table_name = GenerateTable.GetTableName(type);
-        var type_primary_key = GenerateTable.GetPrimaryKey(type);
+        var type_table_name = TableGeneration.GetTableName(type);
+        var type_primary_key = TableGeneration.GetPrimaryKey(type);
 
         ColumnType = GetColumnType(type_primary_key.PrimaryKeyInfo.PropertyType);
         ColumnSize = GetColumnSize(type_primary_key.PrimaryKeyInfo);
@@ -78,13 +81,13 @@ public class DatabaseColumn : Attribute
         return (constraint, ddl);
     }
 
-    private int GetColumnSize(MemberInfo primary_key_info)
+    public int GetColumnSize(MemberInfo primary_key_info)
     {
         var column = primary_key_info.GetCustomAttribute<DatabaseColumn>();
         return column.ColumnSize;
     }
 
-    private string CreateFlagString()
+    public string CreateFlagString()
     {
         var flag_dict = new Dictionary<string, int>();
         if (ColumnFlag.HasFlag(ColumnFlag.AutoIncrement))
@@ -100,67 +103,70 @@ public class DatabaseColumn : Attribute
         return string.Join(" ", flag_dict.OrderByDescending(x => x.Value).Select(x => x.Key));
     }
 
-    public ColumnType GetColumnType(Type property_type)
+    public string GetColumnType(Type property_type) => 
+        GetColumnTypeEnum(property_type).ToString();
+
+    private EColumnType GetColumnTypeEnum(Type property_type)
     {
         if (property_type == typeof(int))
         {
-            return ColumnType.INT;
+            return EColumnType.INT;
         }
 
         if (property_type == typeof(long))
         {
-            return ColumnType.BIGINT;
+            return EColumnType.BIGINT;
         }
 
         if (property_type == typeof(bool))
         {
-            return ColumnType.BIT;
+            return EColumnType.BIT;
         }
 
         if (property_type == typeof(char))
         {
-            return ColumnType.CHAR;
+            return EColumnType.CHAR;
         }
 
         if (property_type == typeof(Guid))
         {
             ColumnSize = 36;
-            return ColumnType.CHAR;
+            return EColumnType.CHAR;
         }
 
         if (property_type == typeof(DateTime))
         {
-            return ColumnType.DATETIME;
+            return EColumnType.DATETIME;
         }
 
         if (property_type == typeof(decimal))
         {
-            return ColumnType.DECIMAL;
+            return EColumnType.DECIMAL;
         }
 
         if (property_type == typeof(float))
         {
-            return ColumnType.FLOAT;
+            return EColumnType.FLOAT;
         }
 
         if (property_type == typeof(string))
         {
             ColumnSize = 255;
-            return ColumnType.VARCHAR;
+            return EColumnType.VARCHAR;
         }
 
         if (property_type == typeof(byte))
         {
-            return ColumnType.TINYINT;
+            return EColumnType.TINYINT;
         }
 
         if (property_type == typeof(byte[]))
         {
-            return ColumnType.VARBINARY;
+            return EColumnType.VARBINARY;
         }
 
         ColumnSize = 255;
-        return ColumnType.VARCHAR;
+        return EColumnType.VARCHAR;
     }
 
     public bool IsPrimaryKey() =>

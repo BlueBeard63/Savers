@@ -56,7 +56,7 @@
         <Compile Include="Generation\Clauses.cs" />
         <Compile Include="Generation\Statements.cs" />
         <Compile Include="Generation\TableGeneration.cs" />
-        <Compile Include="Misc\ColumnTypeTests.cs" />
+        <Compile Include="Misc\EColumnTypeTests.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="TestClass.cs" />
     </ItemGroup>

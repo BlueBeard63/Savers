@@ -1,6 +1,6 @@
 namespace Savers.MySql.Tables.Enums;
 
-public enum ColumnType
+public enum EColumnType
 {
     // ReSharper disable once InconsistentNaming
     BIGINT,

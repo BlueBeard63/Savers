@@ -106,10 +106,7 @@
         <Compile Include="Tables\Attributes\DatabaseColumn.cs" />
         <Compile Include="Tables\Attributes\DatabaseIgnore.cs" />
         <Compile Include="Tables\Attributes\DatabaseTable.cs" />
-        <Compile Include="Tables\Enums\ColumnFlag.cs" />
-        <Compile Include="Tables\Enums\ColumnType.cs" />
-        <Compile Include="Tables\GenerateTable.cs" />
-        <Compile Include="Tables\PrimaryKeyData.cs" />
+        <Compile Include="Tables\Enums\EColumnType.cs" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\Savers.Shared\Savers.Shared.csproj">

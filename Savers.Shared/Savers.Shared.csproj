@@ -47,17 +47,24 @@
         <Compile Include="Exceptions\NoFilterConditions.cs" />
         <Compile Include="Exceptions\NoPrimaryKeyFound.cs" />
         <Compile Include="Exceptions\NoPropertiesToSerialize.cs" />
+        <Compile Include="Exceptions\SerializationError.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="Savers\File\IFileSaver.cs" />
         <Compile Include="Savers\ISaver.cs" />
         <Compile Include="Savers\SaverType.cs" />
         <Compile Include="Savers\Sql\DataParam.cs" />
+        <Compile Include="Savers\Sql\Enums\ColumnFlag.cs" />
         <Compile Include="Savers\Sql\Interfaces\IClause.cs" />
+        <Compile Include="Savers\Sql\Interfaces\IDatabaseColumn.cs" />
+        <Compile Include="Savers\Sql\Interfaces\IDatabaseIgnore.cs" />
+        <Compile Include="Savers\Sql\Interfaces\IDatabaseTable.cs" />
         <Compile Include="Savers\Sql\Interfaces\IExecutor.cs" />
         <Compile Include="Savers\Sql\Interfaces\ISqlSaver.cs" />
         <Compile Include="Savers\Sql\Interfaces\IStatement.cs" />
         <Compile Include="Savers\Sql\Order.cs" />
+        <Compile Include="Savers\Sql\PrimaryKeyData.cs" />
         <Compile Include="Savers\Sql\SQLData.cs" />
+        <Compile Include="Savers\Sql\TableGeneration.cs" />
     </ItemGroup>
     <ItemGroup>
       <Content Include="README.md" />

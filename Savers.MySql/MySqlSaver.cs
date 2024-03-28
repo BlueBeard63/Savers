@@ -1,7 +1,4 @@
-using System.Collections.Generic;
 using Savers.MySql.Statements;
-using Savers.MySql.Tables;
-using Savers.Shared;
 using Savers.Shared.Savers;
 using Savers.Shared.Savers.Sql;
 using Savers.Shared.Savers.Sql.Interfaces;
@@ -26,7 +23,7 @@ public class MySqlSaver<T> : ISqlSaver<T>
     }
 
     public string GenerateTableDDL() =>
-        GenerateTable.Generate(typeof(T));
+        TableGeneration.Generate(typeof(T));
 
     public IStatement<T> StartQuery() =>
         new MySqlStatements<T>(new SqlData(ConnectionPath));
