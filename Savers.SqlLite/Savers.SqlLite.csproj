@@ -45,6 +45,9 @@
         <Compile Include="SqlLiteExecutor.cs" />
         <Compile Include="SqlLiteSaver.cs" />
         <Compile Include="Statements\SqlLiteStatements.cs" />
+        <Compile Include="Tables\Attributes\DatabaseColumn.cs" />
+        <Compile Include="Tables\Attributes\DatabaseIgnore.cs" />
+        <Compile Include="Tables\Attributes\DatabaseTable.cs" />
         <Compile Include="Tables\Enums\ColumnType.cs" />
     </ItemGroup>
     <ItemGroup>
@@ -52,9 +55,6 @@
         <Project>{7bb0c3b4-5cc8-477f-be65-25c1943f259f}</Project>
         <Name>Savers.Shared</Name>
       </ProjectReference>
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Tables\Attributes\" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
