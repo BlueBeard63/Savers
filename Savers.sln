@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6754A30C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Savers.Tests.MySQL", "Savers.Tests.MySQL\Savers.Tests.MySQL.csproj", "{AE78A784-9D2F-4696-8A2C-62FFA8D898A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Savers.SqlLite", "Savers.SqlLite\Savers.SqlLite.csproj", "{A1C3C60E-AFA7-4C67-86DF-DB196A3474B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +29,14 @@ Global
 		{AE78A784-9D2F-4696-8A2C-62FFA8D898A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE78A784-9D2F-4696-8A2C-62FFA8D898A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE78A784-9D2F-4696-8A2C-62FFA8D898A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1C3C60E-AFA7-4C67-86DF-DB196A3474B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1C3C60E-AFA7-4C67-86DF-DB196A3474B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1C3C60E-AFA7-4C67-86DF-DB196A3474B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1C3C60E-AFA7-4C67-86DF-DB196A3474B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C7E83229-61B3-4302-9033-A5351B84A45F} = {0C94CC69-5CA3-4532-A815-9A4E77AB0504}
 		{AE78A784-9D2F-4696-8A2C-62FFA8D898A4} = {6754A30C-8D6B-48C5-A4D0-DFE05F9C8AF4}
+		{A1C3C60E-AFA7-4C67-86DF-DB196A3474B6} = {0C94CC69-5CA3-4532-A815-9A4E77AB0504}
 	EndGlobalSection
 EndGlobal
