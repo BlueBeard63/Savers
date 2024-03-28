@@ -35,7 +35,7 @@ namespace Savers.SqlLite.Statements
 
         public IExecutor Insert(T obj)
         {
-            throw new System.NotImplementedException();
+            return new SqlLiteExecutor(Data);
         }
     }
 }

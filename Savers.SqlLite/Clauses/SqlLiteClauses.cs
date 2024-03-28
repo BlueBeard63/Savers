@@ -82,8 +82,5 @@ internal class SqlLiteClauses<T>(SqlData data) : IClause<T>
         }
     }
 
-    public IExecutor Finalise()
-    {
-        throw new System.NotImplementedException();
-    }
+    public IExecutor Finalise() => new SqlLiteExecutor(Data);
 }

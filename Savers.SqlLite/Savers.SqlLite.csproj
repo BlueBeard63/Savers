@@ -42,6 +42,7 @@
     <ItemGroup>
         <Compile Include="Clauses\SqlLiteClauses.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="SqlLiteExecutor.cs" />
         <Compile Include="SqlLiteSaver.cs" />
         <Compile Include="Statements\SqlLiteStatements.cs" />
     </ItemGroup>
