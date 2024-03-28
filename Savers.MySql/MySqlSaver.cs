@@ -17,13 +17,7 @@ public class MySqlSaver<T> : ISqlSaver<T>
     {
         ConnectionPath = location;
         
-        var executor = new MySqlExecutor(new SqlData
-        {
-            ConnectionPath = ConnectionPath,
-            Filters = new Dictionary<string, (string, int)>(),
-            Params = new List<DataParam>()
-        });
-
+        var executor = new MySqlExecutor(new SqlData(ConnectionPath));
         executor.Execute(GenerateTableDDL());
     }
 
@@ -35,10 +29,5 @@ public class MySqlSaver<T> : ISqlSaver<T>
         GenerateTable.Generate(typeof(T));
 
     public IStatement<T> StartQuery() =>
-        new MySqlStatements<T>(new SqlData
-        {
-            ConnectionPath = ConnectionPath,
-            Filters = new Dictionary<string, (string, int)>(),
-            Params = new List<DataParam>()
-        });
+        new MySqlStatements<T>(new SqlData(ConnectionPath));
 }
