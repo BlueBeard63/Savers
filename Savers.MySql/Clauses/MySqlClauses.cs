@@ -1,3 +1,4 @@
+using System.Linq;
 using Savers.MySql.Statements;
 using Savers.Shared.Exceptions;
 using Savers.Shared.Savers.Sql;

@@ -1,3 +1,5 @@
+using System;
+
 namespace Savers.MySql.Tables.Enums;
 
 [Flags]
