@@ -29,7 +29,7 @@ namespace Savers.Tests.MySQL.Generation
 
     public class NormalTableGenerationTestData : IEnumerable<object[]>
     {
-        private static readonly IEnumerable<object[]> TestObjects = new[]
+        private static readonly IEnumerable<object[]> _TestObjects = new[]
         {
             new object[]
             {
@@ -38,14 +38,14 @@ namespace Savers.Tests.MySQL.Generation
             }
         };
 
-        public IEnumerator<object[]> GetEnumerator() => TestObjects.GetEnumerator();
+        public IEnumerator<object[]> GetEnumerator() => _TestObjects.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 
     public class ForeignKeyTableGenerationTestData : IEnumerable<object[]>
     {
-        private static readonly IEnumerable<object[]> TestObjects = new[]
+        private static readonly IEnumerable<object[]> _TestObjects = new[]
         {
             new object[]
             {
@@ -54,7 +54,7 @@ namespace Savers.Tests.MySQL.Generation
             }
         };
 
-        public IEnumerator<object[]> GetEnumerator() => TestObjects.GetEnumerator();
+        public IEnumerator<object[]> GetEnumerator() => _TestObjects.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }

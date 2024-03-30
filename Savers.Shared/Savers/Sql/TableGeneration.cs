@@ -7,9 +7,9 @@ using Savers.Shared.Savers.Sql.Interfaces;
 
 namespace Savers.Shared.Savers.Sql;
 
-public class TableGeneration
+public static class TableGeneration
 {
-    private const string TableFormat = "CREATE TABLE IF NOT EXISTS {0} ( {1}, {2} );";
+    private const string _TableFormat = "CREATE TABLE IF NOT EXISTS {0} ( {1}, {2} );";
     private static Dictionary<Type, (string, PrimaryKeyData)> TypesToTableData { get; set; } = new();
 
     public static string Generate(Type type)
@@ -63,17 +63,17 @@ public class TableGeneration
         var constraints = columns
             .Select(x => x.Item2)
             .Where(x => !string.IsNullOrEmpty(x))
-            .Select(x => string.Format(x, table_data.TableName));
+            .Select(x => string.Format(x, table_data?.TableName));
 
         var table =
             string.Format(
-                TableFormat,
-                table_data.TableName,
+                _TableFormat,
+                table_data?.TableName,
                 string.Join(", ", fields),
                 string.Join(", ", constraints));
 
         TypesToTableData.Add(type,
-            (table_data.TableName, new PrimaryKeyData(primary_key.Item2.GetColumnName(), primary_key.x)));
+            (table_data?.TableName, new PrimaryKeyData(primary_key.Item2.GetColumnName(), primary_key.x)));
 
         return reference_tables.Any() ? string.Join(" ", reference_tables) + " " + table : table;
     }

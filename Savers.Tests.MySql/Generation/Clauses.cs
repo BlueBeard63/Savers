@@ -60,7 +60,7 @@ namespace Savers.Tests.MySQL.Generation
 
     public class LimitTestData : IEnumerable<object[]>
     {
-        private static readonly IEnumerable<object[]> TestObjects = new[]
+        private static readonly IEnumerable<object[]> _TestObjects = new[]
         {
             new object[]
             {
@@ -74,14 +74,14 @@ namespace Savers.Tests.MySQL.Generation
             }
         };
 
-        public IEnumerator<object[]> GetEnumerator() => TestObjects.GetEnumerator();
+        public IEnumerator<object[]> GetEnumerator() => _TestObjects.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 
     public class OrderByTestData : IEnumerable<object[]>
     {
-        private static readonly IEnumerable<object[]> TestObjects = new[]
+        private static readonly IEnumerable<object[]> _TestObjects = new[]
         {
             new object[]
             {
@@ -130,14 +130,14 @@ namespace Savers.Tests.MySQL.Generation
             }
         };
 
-        public IEnumerator<object[]> GetEnumerator() => TestObjects.GetEnumerator();
+        public IEnumerator<object[]> GetEnumerator() => _TestObjects.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 
     public class WhereContainsTestData : IEnumerable<object[]>
     {
-        private static readonly IEnumerable<object[]> TestObjects = new[]
+        private static readonly IEnumerable<object[]> _TestObjects = new[]
         {
             new object[]
             {
@@ -151,14 +151,14 @@ namespace Savers.Tests.MySQL.Generation
             }
         };
 
-        public IEnumerator<object[]> GetEnumerator() => TestObjects.GetEnumerator();
+        public IEnumerator<object[]> GetEnumerator() => _TestObjects.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 
     public class WhereEndsTestData : IEnumerable<object[]>
     {
-        private static readonly IEnumerable<object[]> TestObjects = new[]
+        private static readonly IEnumerable<object[]> _TestObjects = new[]
         {
             new object[]
             {
@@ -172,14 +172,14 @@ namespace Savers.Tests.MySQL.Generation
             }
         };
 
-        public IEnumerator<object[]> GetEnumerator() => TestObjects.GetEnumerator();
+        public IEnumerator<object[]> GetEnumerator() => _TestObjects.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 
     public class WhereStartsTestData : IEnumerable<object[]>
     {
-        private static readonly IEnumerable<object[]> TestObjects = new[]
+        private static readonly IEnumerable<object[]> _TestObjects = new[]
         {
             new object[]
             {
@@ -193,14 +193,14 @@ namespace Savers.Tests.MySQL.Generation
             }
         };
 
-        public IEnumerator<object[]> GetEnumerator() => TestObjects.GetEnumerator();
+        public IEnumerator<object[]> GetEnumerator() => _TestObjects.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 
     public class WhereTestData : IEnumerable<object[]>
     {
-        private static readonly IEnumerable<object[]> TestObjects = new[]
+        private static readonly IEnumerable<object[]> _TestObjects = new[]
         {
             new object[]
             {
@@ -214,7 +214,7 @@ namespace Savers.Tests.MySQL.Generation
             }
         };
 
-        public IEnumerator<object[]> GetEnumerator() => TestObjects.GetEnumerator();
+        public IEnumerator<object[]> GetEnumerator() => _TestObjects.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }

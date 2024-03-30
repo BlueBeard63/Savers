@@ -19,73 +19,73 @@ namespace Savers.Tests.MySQL.Misc
 
     public class ColumnTypeTestData : IEnumerable<object[]>
     {
-        private static readonly DatabaseColumn Column = new("Test");
+        private static readonly DatabaseColumn _Column = new("Test");
         
-        private static readonly IEnumerable<object[]> TestObjects = new[]
+        private static readonly IEnumerable<object[]> _TestObjects = new[]
         {
             new object[]
             {
-                Column.GetColumnType(typeof(int)),
+                _Column.GetColumnType(typeof(int)),
                 "INT"
             },
             new object[]
             {
-                Column.GetColumnType(typeof(long)),
+                _Column.GetColumnType(typeof(long)),
                 "BIGINT"
             },
             new object[]
             {
-                Column.GetColumnType(typeof(bool)),
+                _Column.GetColumnType(typeof(bool)),
                 "BIT"
             },
             new object[]
             {
-                Column.GetColumnType(typeof(char)),
+                _Column.GetColumnType(typeof(char)),
                 "CHAR"
             },
             new object[]
             {
-                Column.GetColumnType(typeof(Guid)),
+                _Column.GetColumnType(typeof(Guid)),
                 "CHAR"
             },
             new object[]
             {
-                Column.GetColumnType(typeof(DateTime)),
+                _Column.GetColumnType(typeof(DateTime)),
                 "DATETIME"
             },
             new object[]
             {
-                Column.GetColumnType(typeof(decimal)),
+                _Column.GetColumnType(typeof(decimal)),
                 "DECIMAL"
             },
             new object[]
             {
-                Column.GetColumnType(typeof(float)),
+                _Column.GetColumnType(typeof(float)),
                 "FLOAT"
             },
             new object[]
             {
-                Column.GetColumnType(typeof(string)),
+                _Column.GetColumnType(typeof(string)),
                 "VARCHAR"
             },
             new object[]
             {
-                Column.GetColumnType(typeof(byte)),
+                _Column.GetColumnType(typeof(byte)),
                 "TINYINT"
             },
             new object[]
             {
-                Column.GetColumnType(typeof(byte[])),
+                _Column.GetColumnType(typeof(byte[])),
                 "VARBINARY"
             },
             new object[]
             {
-                Column.GetColumnType(typeof(uint)),
+                _Column.GetColumnType(typeof(uint)),
                 "VARCHAR"
             },
         };
 
-        public IEnumerator<object[]> GetEnumerator() => TestObjects.GetEnumerator();
+        public IEnumerator<object[]> GetEnumerator() => _TestObjects.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }

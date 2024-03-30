@@ -7,7 +7,7 @@ using DataColumn = Savers.MySql.Statements.DataColumn;
 
 namespace Savers.MySql;
 
-internal class ParameterConverter
+internal static class ParameterConverter
 {
     public static DataParam GetParam(DataColumn column, List<DataParam> data_params)
     {

@@ -59,7 +59,7 @@ namespace Savers.Tests.MySQL.Generation
 
     public class SelectStatementTestData : IEnumerable<object[]>
     {
-        private static readonly IEnumerable<object[]> TestObjects = new[]
+        private static readonly IEnumerable<object[]> _TestObjects = new[]
         {
             new object[]
             {
@@ -74,14 +74,14 @@ namespace Savers.Tests.MySQL.Generation
             }
         };
 
-        public IEnumerator<object[]> GetEnumerator() => TestObjects.GetEnumerator();
+        public IEnumerator<object[]> GetEnumerator() => _TestObjects.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
     
     public class CountStatementTestData : IEnumerable<object[]>
     {
-        private static readonly IEnumerable<object[]> TestObjects = new[]
+        private static readonly IEnumerable<object[]> _TestObjects = new[]
         {
             new object[]
             {
@@ -90,14 +90,14 @@ namespace Savers.Tests.MySQL.Generation
             }
         };
 
-        public IEnumerator<object[]> GetEnumerator() => TestObjects.GetEnumerator();
+        public IEnumerator<object[]> GetEnumerator() => _TestObjects.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
     
     public class SumStatementTestData : IEnumerable<object[]>
     {
-        private static readonly IEnumerable<object[]> TestObjects = new[]
+        private static readonly IEnumerable<object[]> _TestObjects = new[]
         {
             new object[]
             {
@@ -106,14 +106,14 @@ namespace Savers.Tests.MySQL.Generation
             }
         };
 
-        public IEnumerator<object[]> GetEnumerator() => TestObjects.GetEnumerator();
+        public IEnumerator<object[]> GetEnumerator() => _TestObjects.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
     
     public class AverageStatementTestData : IEnumerable<object[]>
     {
-        private static readonly IEnumerable<object[]> TestObjects = new[]
+        private static readonly IEnumerable<object[]> _TestObjects = new[]
         {
             new object[]
             {
@@ -127,14 +127,14 @@ namespace Savers.Tests.MySQL.Generation
             }
         };
 
-        public IEnumerator<object[]> GetEnumerator() => TestObjects.GetEnumerator();
+        public IEnumerator<object[]> GetEnumerator() => _TestObjects.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
     
     public class InsertStatementTestData : IEnumerable<object[]>
     {
-        private static readonly IEnumerable<object[]> TestObjects = new[]
+        private static readonly IEnumerable<object[]> _TestObjects = new[]
         {
             new object[]
             {
@@ -143,14 +143,14 @@ namespace Savers.Tests.MySQL.Generation
             }
         };
 
-        public IEnumerator<object[]> GetEnumerator() => TestObjects.GetEnumerator();
+        public IEnumerator<object[]> GetEnumerator() => _TestObjects.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 
     public class UpdateStatementTestData : IEnumerable<object[]>
     {
-        private static readonly IEnumerable<object[]> TestObjects = new[]
+        private static readonly IEnumerable<object[]> _TestObjects = new[]
         {
             new object[]
             {
@@ -164,7 +164,7 @@ namespace Savers.Tests.MySQL.Generation
             },
         };
 
-        public IEnumerator<object[]> GetEnumerator() => TestObjects.GetEnumerator();
+        public IEnumerator<object[]> GetEnumerator() => _TestObjects.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
