@@ -1,14 +1,14 @@
-This is the MySql Saver. Example of how to use to generate the DDL is below:
+This is the SqlLite Saver. Example of how to use to generate the DDL is below:
 
 ```csharp
-new MySqlSaver<Map>()
+new SqlLiteSaver<Map>()
     .Activate(ConnectionString);
 ```
 
-To use the Sql generation, it you would need to either create a new ``MySqlSaver`` or use an already existing saver. After that you can call the ``StartQuery`` method which will allow you to easily create the Sql quickly. This can be seen below, where we start the query to create the selection statement.
+To use the Sql generation, it you would need to either create a new ``SqlLiteSaver`` or use an already existing saver. After that you can call the ``StartQuery`` method which will allow you to easily create the Sql quickly. This can be seen below, where we start the query to create the selection statement.
 
 ```csharp
-new MySqlSaver<TestClass>().StartQuery().Select("TestClassString")
+new SqlLiteSaver<TestClass>().StartQuery().Select("TestClassString")
 ```
 
 After choosing which statement to use, you can then add on a number of clauses such as the ``Where``, ``OrderBy`` or other clauses. These will automatically get ordered into the correct order needed for the Sql. You can see examples for the different clauses below.
@@ -17,26 +17,26 @@ After choosing which statement to use, you can then add on a number of clauses s
 ### Selection Statement:
 Select | All Parameters:
 ```csharp
-new MySqlSaver<TestClass>().StartQuery().Select()
+new SqlLiteSaver<TestClass>().StartQuery().Select()
 ```
 
 Select | With Parameters:
 ```csharp
-new MySqlSaver<TestClass>().StartQuery().Select("TestClassString")
+new SqlLiteSaver<TestClass>().StartQuery().Select("TestClassString")
 ```
 
 ---
 
 ### Count Statement:
 ```csharp
-new MySqlSaver<TestClass>().StartQuery().Count()
+new SqlLiteSaver<TestClass>().StartQuery().Count()
 ```
 
 ---
 
 ### Sum Statement:
 ```csharp
-new MySqlSaver<TestClass>().StartQuery().Sum("TestValue")
+new SqlLiteSaver<TestClass>().StartQuery().Sum("TestValue")
 ```
 
 ---
@@ -44,19 +44,19 @@ new MySqlSaver<TestClass>().StartQuery().Sum("TestValue")
 ### Average Statement:
 Average | One Field:
 ```csharp
-new MySqlSaver<TestClass>().StartQuery().Average("TestValue")
+new SqlLiteSaver<TestClass>().StartQuery().Average("TestValue")
 ```
 
 Average | Multiple Fields:
 ```csharp
-new MySqlSaver<TestClass>().StartQuery().Average("TestValue", "TestValue2").Finalise()
+new SqlLiteSaver<TestClass>().StartQuery().Average("TestValue", "TestValue2").Finalise()
 ```
 
 ---
 
 ### Insert Statement:
 ```csharp
-new MySqlSaver<TestClass>().StartQuery().Insert(new TestClass { TestClassString = "TestString" })
+new SqlLiteSaver<TestClass>().StartQuery().Insert(new TestClass { TestClassString = "TestString" })
 ```
 
 ---
@@ -64,19 +64,19 @@ new MySqlSaver<TestClass>().StartQuery().Insert(new TestClass { TestClassString 
 ### Update Statement:
 Update | One Field:
 ```csharp
-new MySqlSaver<TestClass>().StartQuery().Update(("TestClassString", "Example")).Finalise()
+new SqlLiteSaver<TestClass>().StartQuery().Update(("TestClassString", "Example")).Finalise()
 ```
 
 Update | Multiple Fields:
 ```csharp
-new MySqlSaver<TestClass>().StartQuery().Update(("TestClassString", "Example"), ("TestExampleInt", 5)).Finalise()
+new SqlLiteSaver<TestClass>().StartQuery().Update(("TestClassString", "Example"), ("TestExampleInt", 5)).Finalise()
 ```
 
 ## Clauses:
 ### Where Clause:
 Where Start:
 ```csharp
-new MySqlSaver<TestClass>()
+new SqlLiteSaver<TestClass>()
     .StartQuery()
     .Count()
     .WhereStarts(("TestValueString", "abc"))
@@ -85,7 +85,7 @@ new MySqlSaver<TestClass>()
 
 Where End:
 ```csharp
-new MySqlSaver<TestClass>()
+new SqlLiteSaver<TestClass>()
     .StartQuery()
     .Count()
     .WhereEnds(("TestValueString", "abc"))
@@ -94,7 +94,7 @@ new MySqlSaver<TestClass>()
 
 Where Contains:
 ```csharp
-new MySqlSaver<TestClass>()
+new SqlLiteSaver<TestClass>()
     .StartQuery()
     .Count()
     .WhereContains(("TestValueString", "abc"))
@@ -103,7 +103,7 @@ new MySqlSaver<TestClass>()
 
 Where (Normal):
 ```csharp
-new MySqlSaver<TestClass>()
+new SqlLiteSaver<TestClass>()
     .StartQuery()
     .Count()
     .Where(("TestValueString", "abc"))
@@ -115,7 +115,7 @@ new MySqlSaver<TestClass>()
 ### Order By Clause:
 Order By | All Ordering By Ascending:
 ```csharp
-new MySqlSaver<TestClass>()
+new SqlLiteSaver<TestClass>()
     .StartQuery()
     .Count()
     .OrderBy(Order.Ascending, "TestValue", "TestValue2")
@@ -124,7 +124,7 @@ new MySqlSaver<TestClass>()
 
 Order By | All Ordering By Descending:
 ```csharp
-new MySqlSaver<TestClass>()
+new SqlLiteSaver<TestClass>()
     .StartQuery()
     .Count()
     .OrderBy(Order.Descending, "TestValue", "TestValue2")
@@ -133,7 +133,7 @@ new MySqlSaver<TestClass>()
 
 Order By | Descending and Ascending:
 ```csharp
-new MySqlSaver<TestClass>()
+new SqlLiteSaver<TestClass>()
     .StartQuery()
     .Count()
     .OrderBy(("TestValue", Order.Ascending), ("TestValue2", Order.Descending))
@@ -144,7 +144,7 @@ new MySqlSaver<TestClass>()
 
 ### Limit Clause:
 ```csharp
- new MySqlSaver<TestClass>()
+ new SqlLiteSaver<TestClass>()
     .StartQuery()
     .Count()
     .Limit(10)
