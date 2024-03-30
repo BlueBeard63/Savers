@@ -17,4 +17,9 @@ internal class SqlLiteExecutor(SqlData data) : IExecutor
         return_value = default;
         return false;
     }
+
+    internal bool Execute(string ddl)
+    {
+        return false;
+    }
 }

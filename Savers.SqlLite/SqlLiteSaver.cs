@@ -14,9 +14,8 @@ namespace Savers.SqlLite
         {
             Connection = location;
             
-            var table = GenerateTableDDL();
-            // Generate Executor
-            // Execute Table DDL
+            var executor = new SqlLiteExecutor(new SqlData(Connection));
+            executor.Execute(GenerateTableDDL());
         }
 
         public void Deactivate()
