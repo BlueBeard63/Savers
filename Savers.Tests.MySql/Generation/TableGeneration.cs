@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Savers.MySql;
+using Savers.Tests.MySql;
 using Xunit;
 
 namespace Savers.Tests.MySQL.Generation

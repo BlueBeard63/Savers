@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Savers.MySql;
 using Savers.Shared.Savers.Sql;
+using Savers.Tests.MySql;
 using Xunit;
 
 namespace Savers.Tests.MySQL.Generation

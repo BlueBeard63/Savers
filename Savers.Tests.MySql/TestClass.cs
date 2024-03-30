@@ -1,7 +1,7 @@
 ﻿using Savers.MySql.Tables.Attributes;
 using Savers.Shared.Savers.Sql.Enums;
 
-namespace Savers.Tests.MySQL
+namespace Savers.Tests.MySql
 {
     [DatabaseTable("TestClass")]
     public class TestClass
