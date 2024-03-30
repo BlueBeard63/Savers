@@ -3,10 +3,15 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>latest</LangVersion>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Savers.Shared\Savers.Shared.csproj" />
     </ItemGroup>
+    
+    <ItemGroup>
+      <None Include="./README.md" Pack="true" PackagePath="./"/>
+  </ItemGroup>
 
 </Project>
