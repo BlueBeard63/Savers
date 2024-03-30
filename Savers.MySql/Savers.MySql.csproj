@@ -4,6 +4,13 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>latest</LangVersion>
         <PackageReadmeFile>README.md</PackageReadmeFile>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Version>1.0.2</Version>
+        <Title>Savers.MySql</Title>
+        <Authors>BlueBeard63</Authors>
+        <Description>This is a MySql saver, that allows the use of classes to generate ddl as well as easier generation of correct syntax for mysql sql.</Description>
+        <RepositoryUrl>https://github.com/BlueBeard63/Savers</RepositoryUrl>
+        <RepositoryType>GitHub</RepositoryType>
     </PropertyGroup>
 
     <ItemGroup>

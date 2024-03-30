@@ -4,6 +4,11 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>latest</LangVersion>
         <PackageReadmeFile>README.md</PackageReadmeFile>
+        <Authors>BlueBeard63</Authors>
+        <Description>This is a LiteSql saver, that allows the use of classes to generate ddl as well as easier generation of correct syntax for litesql sql.</Description>
+        <RepositoryUrl>https://github.com/BlueBeard63/Savers</RepositoryUrl>
+        <RepositoryType>GitHub</RepositoryType>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>

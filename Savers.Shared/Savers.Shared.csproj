@@ -4,6 +4,12 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>latest</LangVersion>
         <PackageReadmeFile>README.md</PackageReadmeFile>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Authors>BlueBeard63</Authors>
+        <Description>This is the support for how all of the savers are built including the table generation code that is shared between all of them as well as the attribute interfaces.</Description>
+        <RepositoryUrl>https://github.com/BlueBeard63/Savers</RepositoryUrl>
+        <RepositoryType>GitHub</RepositoryType>
+        <Version>1.0.2</Version>
     </PropertyGroup>
     <ItemGroup>
         <None Include="./README.md" Pack="true" PackagePath="./"/>
