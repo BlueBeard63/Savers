@@ -1,158 +1,67 @@
-# Savers
+## Overview
 
-- [SqlLite Saver](https://github.com/BlueBeard63/Savers/tree/main/Savers.SqlLite)
-- [MySql Saver](https://github.com/BlueBeard63/Savers/tree/main/Savers.MySql)
+During my time working with *C#*, I designed and created many different projects that used databases and methods which exported them as model class files. This led me to the idea: what if we could use the models themselves to generate and communicate with the database?
 
-## MySQL Savers:
-This is the MySql Saver. Example of how to use to generate the DDL is below:
+Around the same time, I began developing APIs using JavaScript and databases through **[Sequelize](https://sequelize.org/)**. Since using LINQ in my code was already common, I thought it would be interesting to create something similar in concept.
 
-```csharp
-new MySqlSaver<Map>()
-    .Activate(ConnectionString);
+## Development Approach
+
+While exploring this idea, I discussed it with a few friends as well as my dad. My friends were using **SQLite** for their databases since they wanted to apply the concept in their own projects.
+
+I decided to make the system templatable so that it could work with multiple database systems — I wanted to use **MySQL**, while my friends preferred **SQLite**. At the time, I had recently started using interfaces and thought they would be a good fit for this application.
+
+Additionally, I wanted the system to be easily testable. This would allow me to quickly design and generate features without introducing regressions, ultimately speeding up development by reducing the need for manual testing. I chose **xUnit** for this purpose, with some help from my dad, who recommended it due to his prior experience and its ease of setup.
+
+### System Structure
+
+#### Development of the Statement Interface
+A typical database query starts with a statement such as *SELECT*, *COUNT*, or *UPDATE*. Therefore, I wanted to make these methods available and allow users to add clauses for filtering or ordering results.
+
+```cs
+public interface IStatement<T>
+{
+    SqlData Data { get; set; }
+        
+    IClause<T> Select(params string[] columns);
+    IClause<T> Count();
+    IClause<T> Sum(string column);
+    IClause<T> Average(params string[] columns);
+    IClause<T> Update(params (string, object)[] values);
+        
+    IExecutor Insert(T obj);
+}
 ```
 
-To use the Sql generation, it you would need to either create a new ``MySqlSaver`` or use an already existing saver. After that you can call the ``StartQuery`` method which will allow you to easily create the Sql quickly. This can be seen below, where we start the query to create the selection statement.
 
-```csharp
-new MySqlSaver<TestClass>().StartQuery().Select("TestClassString")
+#### Development of the Clause Interface
+Typically, you use multiple clauses within a single query — for example, filtering with a WHERE clause and then ordering the results. For instance, you might want to select users by their ID and then order them by name.
+
+```cs
+public interface IClause<out T>
+{
+    public SqlData Data { get; }
+
+    IClause<T> Where(params (string, object)[] filters);
+    IClause<T> WhereStarts(params (string, string)[] filters);
+    IClause<T> WhereEnds(params (string, string)[] filters);
+    IClause<T> WhereContains(params (string, string)[] filters);
+
+    IClause<T> OrderBy(Order order, params string[] columns);
+    IClause<T> OrderBy(params (string, Order)[] columns);
+
+    IClause<T> Limit(int count);
+        
+    IExecutor Finalise();
+}
 ```
 
-After choosing which statement to use, you can then add on a number of clauses such as the ``Where``, ``OrderBy`` or other clauses. These will automatically get ordered into the correct order needed for the Sql. You can see examples for the different clauses below.
-
-### Statements List:
-#### Selection Statement:
-Select | All Parameters:
-```csharp
-new MySqlSaver<TestClass>().StartQuery().Select()
-```
-
-Select | With Parameters:
-```csharp
-new MySqlSaver<TestClass>().StartQuery().Select("TestClassString")
-```
-
----
-
-#### Count Statement:
-```csharp
-new MySqlSaver<TestClass>().StartQuery().Count()
-```
-
----
-
-#### Sum Statement:
-```csharp
-new MySqlSaver<TestClass>().StartQuery().Sum("TestValue")
-```
-
----
-
-#### Average Statement:
-Average | One Field:
-```csharp
-new MySqlSaver<TestClass>().StartQuery().Average("TestValue")
-```
-
-Average | Multiple Fields:
-```csharp
-new MySqlSaver<TestClass>().StartQuery().Average("TestValue", "TestValue2").Finalise()
-```
-
----
-
-#### Insert Statement:
-```csharp
-new MySqlSaver<TestClass>().StartQuery().Insert(new TestClass { TestClassString = "TestString" })
-```
-
----
-
-#### Update Statement:
-Update | One Field:
-```csharp
-new MySqlSaver<TestClass>().StartQuery().Update(("TestClassString", "Example")).Finalise()
-```
-
-Update | Multiple Fields:
-```csharp
-new MySqlSaver<TestClass>().StartQuery().Update(("TestClassString", "Example"), ("TestExampleInt", 5)).Finalise()
-```
-
-### Clauses:
-#### Where Clause:
-Where Start:
-```csharp
+### Example Query
+```cs
 new MySqlSaver<TestClass>()
     .StartQuery()
-    .Count()
-    .WhereStarts(("TestValueString", "abc"))
-    .Finalise()
-```
-
-Where End:
-```csharp
-new MySqlSaver<TestClass>()
-    .StartQuery()
-    .Count()
-    .WhereEnds(("TestValueString", "abc"))
-    .Finalise()
-```
-
-Where Contains:
-```csharp
-new MySqlSaver<TestClass>()
-    .StartQuery()
-    .Count()
-    .WhereContains(("TestValueString", "abc"))
-    .Finalise()
-```
-
-Where (Normal):
-```csharp
-new MySqlSaver<TestClass>()
-    .StartQuery()
-    .Count()
+    .Select()
     .Where(("TestValueString", "abc"))
-    .Finalise()
+    .Finalise();
 ```
 
----
-
-#### Order By Clause:
-Order By | All Ordering By Ascending:
-```csharp
-new MySqlSaver<TestClass>()
-    .StartQuery()
-    .Count()
-    .OrderBy(Order.Ascending, "TestValue", "TestValue2")
-    .Finalise()
-```
-
-Order By | All Ordering By Descending:
-```csharp
-new MySqlSaver<TestClass>()
-    .StartQuery()
-    .Count()
-    .OrderBy(Order.Descending, "TestValue", "TestValue2")
-    .Finalise()
-```
-
-Order By | Descending and Ascending:
-```csharp
-new MySqlSaver<TestClass>()
-    .StartQuery()
-    .Count()
-    .OrderBy(("TestValue", Order.Ascending), ("TestValue2", Order.Descending))
-    .Finalise()
-```
-
----
-
-#### Limit Clause:
-```csharp
- new MySqlSaver<TestClass>()
-    .StartQuery()
-    .Count()
-    .Limit(10)
-    .Finalise()
-```
+This query is applied to the `TestClass` model. It assembles a query that selects all data from `TestClass`, filters the results where `TestValueString` equals `"abc"`, and then finalizes the query for execution.
